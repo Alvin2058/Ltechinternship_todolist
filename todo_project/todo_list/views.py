@@ -105,6 +105,7 @@ class TodoUpdate(View):
         except Todo.DoesNotExist:
             return JsonResponse({'error': 'Todo not found'}, status=404)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class TodoDelete(View):
     def delete(self, request, todo_id):
         try:
